@@ -1436,7 +1436,7 @@ function parseTemplates() {
     });
 }
 function testOrTask(text) {
-    return text.replace(/{(.*)}/, function (match, group, offset, string) {
+    return text.replace(/{([^{]*)}/, function (match, group, offset, string) {
         if (!window.settings.rpa)
             return group;
         return {'TEST': 'TASK', 'Test': 'Task', 'test': 'task'}[group];
@@ -1591,7 +1591,7 @@ function stopPropagation(event) {
 }
 </script>
 <script type="text/javascript">
-storage = function () {
+var storage = function () {
     var prefix = 'robot-framework-';
     var storage;
     function init(user) {
